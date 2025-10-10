@@ -1,15 +1,10 @@
 version: '3.8'
 services:
-  mysql-db:
-    image: mysql:8.0
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: mydatabase
-      MYSQL_USER: myuser
-      MYSQL_PASSWORD: mypassword
+  web:
+    build: ./src
     ports:
-      - "3306:3306"
+      - "3000:3000"
     volumes:
-      - mysql_data:/var/lib/mysql
-volumes:
-  mysql_data:
+      - ./src:/usr/src/app
+    environment:
+      SQLITE_DB_PATH: /usr/src/app/database.sqlite

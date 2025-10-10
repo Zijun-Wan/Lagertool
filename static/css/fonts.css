@@ -1,0 +1,30 @@
+/* quick head start */
+@charset "UTF-8";
+
+body {
+    background-color: beige;
+    height: max-content;
+    width: max-content;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: xx-large;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode';
+    color: #000000;
+}
+
+.center{
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.button{
+    border-radius: 12px;
+}
