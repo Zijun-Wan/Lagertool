@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Bookings</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background-color: #f8f8f8;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #edc203;
+      color: white;
+      padding: 10px 30px;
+    }
+
+    header img {
+      height: 50px;
+      cursor: pointer;
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    header a:hover {
+      text-decoration: underline;
+    }
+
+    /* Hauptbereich */
+    main {
+      flex: 1;
+      padding: 40px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      color: #000000;
+    }
+
+    table {
+      width: 80%;
+      margin: 0 auto;
+      border-collapse: collapse;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px 15px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #edc203;
+      color: white;
+    }
+
+    td a {
+      color: #004080;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    td a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      background-color: #f0f0f0;
+      padding: 15px 0;
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    footer img {
+      height: 40px;
+      position: absolute;
+      right: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <a href="homepage.html"><img src="logo.png" alt="Logo"></a>
+    <a href="logout.html">Log out</a>
+  </header>
+
+  <!-- Hauptinhalt -->
+  <main>
+    <h1>My Bookings</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Start</th>
+          <th>Ende</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="booking1.html">Buchung 1</a></td>
+          <td>01.10.2025</td>
+          <td>03.10.2025</td>
+        </tr>
+        <tr>
+          <td><a href="booking2.html">Buchung 2</a></td>
+          <td>05.10.2025</td>
+          <td>08.10.2025</td>
+        </tr>
+        <tr>
+          <td><a href="booking3.html">Buchung 3</a></td>
+          <td>10.10.2025</td>
+          <td>12.10.2025</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p><a href="impressum.html" style="color: inherit; text-decoration: none;">Impressum</a></p>
+    <img src="logo.png" alt="Logo">
+  </footer>
+
+</body>
+</html>
