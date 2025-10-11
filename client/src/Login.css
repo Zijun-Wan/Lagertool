@@ -1,0 +1,127 @@
+/* Shared auth page layout for Login & Register */
+.auth-page {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+}
+
+.login-container {
+    background: #ffffff; /* match home card */
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    border: none;
+    width: 320px;
+}
+
+.login-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-align: center;
+    color: #1e1e1e;
+}
+
+.input-error {
+    color: #b91c1c;
+    font-size: 12px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+.login-input {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 15px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    outline: none;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.password-wrapper {
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.password-wrapper .login-input {
+    padding-right: 40px;
+    margin-bottom: 0;
+}
+
+.toggle-eye {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.login-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #1e40af;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.login-button:hover {
+    background-color: #1e3a8a;
+}
+
+.login-socials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 16px 0 20px;
+}
+
+.social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: #fff;
+    transition: transform .15s ease, box-shadow .15s ease;
+    text-decoration: none;
+}
+
+.social i {
+    color: #111827;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.login-socials a {
+    text-decoration: none;
+}
+
+.social:hover {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transform: translateY(-1px);
+}
+
+.social:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 10px;
+}
