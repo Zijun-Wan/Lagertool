@@ -40,8 +40,8 @@ def UserCheck(user, password):
             return -1
         
 # route for home page
-@app.route('/')
-def home():
+@app.route('/', methods=['GET', 'POST'])
+def login():
     if request.method == 'POST':
         if request.form.get('submit') == 'LOGIN':
             userN = request.form.get('username')
@@ -55,3 +55,7 @@ def home():
                 conn.close()
                 return redirect(url_for('myBorrow'))
     return render_template('login.html')
+
+if __name__== "__main__":
+    # run the Flask app
+    app.run(debug=True)
