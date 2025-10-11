@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- quick head start to html -->
+
 <head>
     <title> login </title>
     <link rel="stylesheet" href="{{url_for('static', filename='css/fonts.css')}}" type="text/css">
@@ -12,20 +12,6 @@
         <h1> login </h1> <br> <br>
         <input type="text" id="user" name="user" placeholder="Username" class="center"> <br> <br>
         <input type="text" id="password" name="password" placeholder="Password" class="center"> <br> <br> <br>
-        <!-- this requires function, release after testing -->
-        <!-- <button type="submit" name="submit" value="LOGIN" class="button center"> login </button> -->
-        
-        <!-- display error messages, might not be needed -->
-        <!-- {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <ul class=flashes>
-                {% for message in messages %}
-                    <li>{{ message }}</li>
-                {% endfor %}
-                </ul>
-            {% endif %}
-            {% endwith %}
-        {% block body %}{% endblock %} -->
 
     </form>
 
