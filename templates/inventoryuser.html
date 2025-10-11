@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background-color: #f8f8f8;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #edc203;
+      color: white;
+      padding: 12px 40px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    header img {
+      height: 50px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    header img:hover {
+      transform: scale(1.05);
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1em;
+      transition: opacity 0.3s ease;
+    }
+
+    header a:hover {
+      opacity: 0.8;
+    }
+
+    /* Hauptbereich */
+    main {
+      flex: 1;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 40px;
+      color: #000000;
+      font-size: 2em;
+      letter-spacing: 0.5px;
+    }
+
+    table {
+      width: 70%;
+      margin: 0 auto;
+      border-collapse: collapse;
+      background-color: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    table:hover {
+      transform: scale(1.01);
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 14px 18px;
+      text-align: center;
+      transition: background-color 0.3s ease;
+    }
+
+    th {
+      background-color: #edc203;
+      color: white;
+      font-size: 1.05em;
+      letter-spacing: 0.3px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #fafafa;
+    }
+
+    tr:hover td {
+      background-color: #fff6cc;
+    }
+
+    td a {
+      color: #004080;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    td a:hover {
+      color: #000;
+    }
+
+    /* Footer */
+    footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      background-color: #f0f0f0;
+      padding: 15px 0;
+      font-size: 0.9em;
+      color: #555;
+      box-shadow: 0 -2px 6px rgba(0,0,0,0.05);
+    }
+
+    footer img {
+      height: 40px;
+      position: absolute;
+      right: 30px;
+      transition: transform 0.3s ease;
+    }
+
+    footer img:hover {
+      transform: scale(1.05);
+    }
+
+    footer a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <a href="homepage.html"><img src="logo.png" alt="Logo"></a>
+    <a href="logout.html">Log out</a>
+  </header>
+
+  <!-- Hauptinhalt -->
+  <main>
+    <h1>Inventory</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Category</th>
+          <th>Available</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="item1.html">Laptop Dell XPS 13</a></td>
+          <td>Electronics</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <td><a href="item2.html">Projector Epson EB-U05</a></td>
+          <td>AV Equipment</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td><a href="item3.html">Conference Table</a></td>
+          <td>Furniture</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td><a href="item4.html">Office Chair Ergonomic</a></td>
+          <td>Furniture</td>
+          <td>18</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p><a href="impressum.html">Impressum</a></p>
+    <img src="logo.png" alt="Logo">
+  </footer>
+
+</body>
+</html>
