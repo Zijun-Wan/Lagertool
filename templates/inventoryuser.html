@@ -142,6 +142,34 @@
     footer a:hover {
       color: #000;
     }
+
+    /* Edit Button */
+    .edit-button {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #edc203;
+      color: #000;
+      border: none;
+      border-radius: 50px;
+      padding: 14px 28px;
+      font-size: 1.1em;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .edit-button:hover {
+      background-color: #ffdb3a;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+    }
+
+    .edit-button:active {
+      transform: translateY(0);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    }
   </style>
 </head>
 <body>
@@ -194,6 +222,9 @@
     <p><a href="impressum.html">Impressum</a></p>
     <img src="logo.png" alt="Logo">
   </footer>
+
+  <!-- Edit Button -->
+  <button class="edit-button" onclick="window.location.href='edit_inventory.html'">Edit</button>
 
 </body>
 </html>
