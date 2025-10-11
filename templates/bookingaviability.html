@@ -1,113 +1,214 @@
+<!DOCTYPE html>
+<html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="booking.css"> 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking Availability</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background-color: #f8f8f8;
+    }
 
-    <title> VISBooking</title>
-    <link rel="stylesheets" href="booking.css"> 
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #edc203;
+      color: white;
+      padding: 10px 30px;
+    }
+
+    header img {
+      height: 50px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    header img:hover {
+      transform: scale(1.05);
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1em;
+      transition: opacity 0.3s ease;
+    }
+
+    header a:hover {
+      opacity: 0.8;
+    }
+
+    /* Hauptbereich */
+    main {
+      flex: 1;
+      padding: 40px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      color: #000000;
+    }
+
+    /* Formular für Datum und Uhrzeit */
+    .booking-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .booking-row {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .booking-row label {
+      font-weight: bold;
+      margin-right: 5px;
+    }
+
+    input[type="date"], select {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      font-size: 1em;
+    }
+
+    /* Button */
+    .inventory-button {
+      display: inline-block;
+      background-color: #edc203;
+      color: #000;
+      border: none;
+      border-radius: 50px;
+      padding: 14px 28px;
+      font-size: 1.1em;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      margin-top: 30px;
+    }
+
+    .inventory-button:hover {
+      background-color: #ffdb3a;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+    }
+
+    .inventory-button:active {
+      transform: translateY(0);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    }
+
+    /* Footer */
+    footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      background-color: #f0f0f0;
+      padding: 15px 0;
+      font-size: 0.9em;
+      color: #555;
+      margin-top: auto;
+    }
+
+    footer img {
+      height: 40px;
+      position: absolute;
+      right: 30px;
+      transition: transform 0.3s ease;
+    }
+
+    footer img:hover {
+      transform: scale(1.05);
+    }
+
+    footer a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #000;
+    }
+  </style>
 </head>
-
 <body>
-    <div class="outerbox">
-        <div class="paragraphs"> 
-            <h1 class="headeraviability">Booking aviability</h1>
-            <p>Please choose the time frame you want to reserve the item for.</p>
-            <button class="startTime" type="submit" name="submit" value="START" onclick="">Edit start time</button>
-            <button class="endTime" type="submit" name="submit" value="END" onclick="">Edit end time</button>
-        </div>
-        <div id="calendar_right"  name="student_Calendar" class="off_color">
-            <h4 class="calendar"> Calendar </h4>
 
-            <table class="calendar"> 
-                
-                <thead class="color">
-                    <tr>
-                        <th colspan="7" class="">
-                            <h3 id="cal_year" name="cal_year">{{year}}</h3>
-                            <div>
-                                <button type="submit" name="submit" value="PREMON"  onclick="" class="no_new_line">Pre</button>
-                                <h4 id=cal_month class="no_new_line">{{mon}}</h4>
-                                <button type="submit" name="submit" value="NEXTMON" onclick="" class="no_new_line">Next</button>
-                            </div>
-                        </th>
-                    </tr>
-                    
-                    <tr>
-                        <th class="">Sun</th>
-                        <th class="">Mon</th>
-                        <th class="">Tue</th>
-                        <th class="">Wed</th>
-                        <th class="">Thu</th>
-                        <th class="">Fri</th>
-                        <th class="">Sat</th>
-                    </tr>
-                </thead>
+  <!-- Header -->
+  <header>
+    <a href="homepage.html"><img src="logo.png" alt="Logo"></a>
+    <a href="logout.html">Log out</a>
+  </header>
 
-                <tbody id="table_body">
-                    <tr>
-                        <td> <button value="0" onclick="" type="submit" name="submit">{{day[0][0]}}</button> </td>
-                        <td> <button value="1" onclick="" type="submit" name="submit">{{day[0][1]}}</button> </td>
-                        <td> <button value="2" onclick="" type="submit" name="submit">{{day[0][2]}}</button> </td>
-                        <td> <button value="3" onclick="" type="submit" name="submit">{{day[0][3]}}</button> </td>
-                        <td> <button value="4" onclick="" type="submit" name="submit">{{day[0][4]}}</button> </td>
-                        <td> <button value="5" onclick="" type="submit" name="submit">{{day[0][5]}}</button> </td>
-                        <td> <button value="6" onclick="" type="submit" name="submit">{{day[0][6]}}</button> </td>
-                    </tr>
+  <!-- Hauptinhalt -->
+  <main>
+    <h1>Booking Availability</h1>
 
-                    <tr>
-                        <td> <button value="7" onclick="" type="submit" name="submit">{{day[1][0]}}</button> </td>
-                        <td> <button value="8" onclick="" type="submit" name="submit">{{day[1][1]}}</button> </td>
-                        <td> <button value="9" onclick="" type="submit" name="submit">{{day[1][2]}}</button> </td>
-                        <td> <button value="10" onclick="" type="submit" name="submit">{{day[1][3]}}</button> </td>
-                        <td> <button value="11" onclick="" type="submit" name="submit">{{day[1][4]}}</button> </td>
-                        <td> <button value="12" onclick="" type="submit" name="submit">{{day[1][5]}}</button> </td>
-                        <td> <button value="13" onclick="" type="submit" name="submit">{{day[1][6]}}</button> </td>
-                    </tr>
+    <form class="booking-form">
+      <!-- Startzeit -->
+      <div class="booking-row">
+        <label for="start-date">Startdatum:</label>
+        <input type="date" id="start-date" name="start-date">
+        <label for="start-time">Startzeit:</label>
+        <select id="start-time" name="start-time">
+          <option value="">-- Uhrzeit --</option>
+        </select>
+      </div>
 
-                    <tr>
-                        <td> <button value="14" onclick="" type="submit" name="submit">{{day[2][0]}}</button> </td>
-                        <td> <button value="15" onclick="" type="submit" name="submit">{{day[2][1]}}</button> </td>
-                        <td> <button value="16" onclick="" type="submit" name="submit">{{day[2][2]}}</button> </td>
-                        <td> <button value="17" onclick="" type="submit" name="submit">{{day[2][3]}}</button> </td>
-                        <td> <button value="18" onclick="" type="submit" name="submit">{{day[2][4]}}</button> </td>
-                        <td> <button value="19" onclick="" type="submit" name="submit">{{day[2][5]}}</button> </td>
-                        <td> <button value="20" onclick="" type="submit" name="submit">{{day[2][6]}}</button> </td>
-                    </tr>
+      <!-- Endzeit -->
+      <div class="booking-row">
+        <label for="end-date">Enddatum:</label>
+        <input type="date" id="end-date" name="end-date">
+        <label for="end-time">Endzeit:</label>
+        <select id="end-time" name="end-time">
+          <option value="">-- Uhrzeit --</option>
+        </select>
+      </div>
 
-                    <tr>
-                        <td> <button value="21" onclick="" type="submit" name="submit">{{day[3][0]}}</button> </td>
-                        <td> <button value="22" onclick="" type="submit" name="submit">{{day[3][1]}}</button> </td>
-                        <td> <button value="23" onclick="" type="submit" name="submit">{{day[3][2]}}</button> </td>
-                        <td> <button value="24" onclick="" type="submit" name="submit">{{day[3][3]}}</button> </td>
-                        <td> <button value="25" onclick="" type="submit" name="submit">{{day[3][4]}}</button> </td>
-                        <td> <button value="26" onclick="" type="submit" name="submit">{{day[3][5]}}</button> </td>
-                        <td> <button value="27" onclick="" type="submit" name="submit">{{day[3][6]}}</button> </td>
-                    </tr>
+      <button type="submit" class="inventory-button">Save Availability</button>
+    </form>
+  </main>
 
-                    <tr>
-                        <td> <button value="28" onclick="" type="submit" name="submit">{{day[4][0]}}</button> </td>
-                        <td> <button value="29" onclick="" type="submit" name="submit">{{day[4][1]}}</button> </td>
-                        <td> <button value="30" onclick="" type="submit" name="submit">{{day[4][2]}}</button> </td>
-                        <td> <button value="31" onclick="" type="submit" name="submit">{{day[4][3]}}</button> </td>
-                        <td> <button value="32" onclick="" type="submit" name="submit">{{day[4][4]}}</button> </td>
-                        <td> <button value="33" onclick="" type="submit" name="submit">{{day[4][5]}}</button> </td>
-                        <td> <button value="34" onclick="" type="submit" name="submit">{{day[4][6]}}</button> </td>
-                    </tr>
+  <!-- Footer -->
+  <footer>
+    <p><a href="impressum.html">Impressum</a></p>
+    <img src="logo.png" alt="Logo">
+  </footer>
 
-                    <tr>
-                        <td> <button value="35" onclick="" type="submit" name="submit">{{day[5][0]}}</button> </td>
-                        <td> <button value="36" onclick="" type="submit" name="submit">{{day[5][1]}}</button> </td>
-                        <td> <button value="37" onclick="" type="submit" name="submit">{{day[5][2]}}</button> </td>
-                        <td> <button value="38" onclick="" type="submit" name="submit">{{day[5][3]}}</button> </td>
-                        <td> <button value="39" onclick="" type="submit" name="submit">{{day[5][4]}}</button> </td>
-                        <td> <button value="40" onclick="" type="submit" name="submit">{{day[5][5]}}</button> </td>
-                        <td> <button value="41" onclick="" type="submit" name="submit">{{day[5][6]}}</button> </td>
-                    </tr>
-                </tbody>
-                
-            </table>
-            
-        </div>
-    </div>
+  <script>
+    // Fülle Uhrzeiten von 9:00 bis 18:00 Uhr
+    const startTimeSelect = document.getElementById('start-time');
+    const endTimeSelect = document.getElementById('end-time');
+
+    for(let hour = 9; hour <= 18; hour++) {
+      let hourStr = hour.toString().padStart(2, '0') + ":00";
+      let option1 = document.createElement('option');
+      option1.value = hourStr;
+      option1.textContent = hourStr;
+      startTimeSelect.appendChild(option1);
+
+      let option2 = document.createElement('option');
+      option2.value = hourStr;
+      option2.textContent = hourStr;
+      endTimeSelect.appendChild(option2);
+    }
+  </script>
+
 </body>
+</html>

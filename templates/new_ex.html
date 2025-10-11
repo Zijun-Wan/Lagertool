@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<head>
+    <title> Aiglon College Expedition (Staff) </title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/expedition1.css')}}" type="text/css">
+</head>
+
+<body>
+
+    <div class="title">
+        <h1> Aiglon College Expedition (Staff) </h1>
+        <img src="{{url_for('static', filename='images/Aiglon_logo.png')}}" width="256" height="144" alt="" class="left">
+    </div>
+
+    <form action="/new_ex" method="POST">   
+
+        <!-- table for kits -->
+        <div>
+            <button type="submit" name="submit" value="HOME" class="button"> Home </button>  
+            <input type="text" id="ex_title" name="ex_title" placeholder="Title" class="center"> <br> <br>
+            
+            <table>
+                
+                <thead>
+                    <tr>
+                        <th colspan="4" class=""> </th>
+                    </tr>
+                    
+                    <tr>
+                        <th>Kits ID</th>
+                        <th>number to bring for staff</th>
+                        <th>Kits ID</th>
+                        <th>number to bring for students</th>
+                    </tr>
+                </thead>
+
+                <tbody id="table_body">
+                    {% for item in kit_lists: %}
+                        <tr>
+                            <td>{{item[0]}}</td>
+                            <td> <input type="integer" id="{{item[0]}}" name="{{item[2]}}" placeholder="number of {{item[1]}}"> </td>
+                            <td>{{item[0]}}</td>
+                            <td> <input type="integer" id="{{item[0]}}" name="{{item[3]}}" placeholder="number of {{item[1]}}"> </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+
+            <br> <button type="submit" name="submit" class="button" value="CONFIRM"> Confirm </button>
+
+        </div>
+
+    </form>
+    
+</body>
