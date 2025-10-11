@@ -12,6 +12,19 @@
         <h1> login </h1> <br> <br>
         <input type="text" id="user" name="user" placeholder="Username" class="center"> <br> <br>
         <input type="text" id="password" name="password" placeholder="Password" class="center"> <br> <br> <br>
+        <button type="submit" name="submit" value="LOGIN" class="button center"> login </button>
+
+         <!-- display error messages -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class=flashes>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            {% endwith %}
+        {% block body %}{% endblock %}
 
     </form>
 
