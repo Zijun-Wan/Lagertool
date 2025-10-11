@@ -36,18 +36,9 @@
 }
 
 header img:hover {
-    animation: spin 4s linear infinite;
+    transform: scale(1.05) rotate(360deg);
+    transition: transform 1s ease; /* smooth animation */
 }
-
-@keyframes spin {
-    from {
-        transform: rotate(0deg) scale(1.05);
-    }
-    to {
-        transform: rotate(360deg) scale(50.05);
-    }
-}
-
 
     header a {
       color: white;
@@ -167,8 +158,8 @@ header img:hover {
 
   <!-- Header -->
   <header>
-    <a href="homepage.html"><img src="logo.png" alt="Logo"></a>
-    <a href="logout.html">Log out</a>
+    <a> <button class="button" type="submit" name="submit" value="HOME"><img src="logo.png" alt="Logo"></button></a>
+    <a> <button class="button" type="submit" name="submit" value="LOGOUT">Log out</button></a>
   </header>
 
   <!-- Hauptinhalt -->
