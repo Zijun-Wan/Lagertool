@@ -30,9 +30,24 @@
       transition: transform 0.3s ease;
     }
 
-    header img:hover {
-      transform: scale(6.05);
+    header img {
+    transition: transform 0.1s ease;
+    display: inline-block;
+}
+
+header img:hover {
+    animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg) scale(1.05);
     }
+    to {
+        transform: rotate(360deg) scale(50.05);
+    }
+}
+
 
     header a {
       color: white;
