@@ -1,31 +1,40 @@
 <!DOCTYPE html>
+<html lang="en"></html>
 
 <head>
-    <title> login </title>
-    <link rel="stylesheet" href="{{url_for('static', filename='css/fonts.css')}}" type="text/css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="fonts.css"> 
+
+    <title> VISinventory </title>
+    <link rel="stylesheet" href="fonts.css"> 
 </head>
 
 <body>
+    <div class="logininbox">
+        <div class="loginheader">
+            <h1> Login </h1>
+        </div> 
+        <div class="inputbox"> 
+            <input class="text" id="username" placeholder="Email or username" class="username" autocomplete="off" required> <br> <br>
+            <input type="text" id="password" name="password" placeholder="Password" class="center" autocomplete="off" required> <br> <br> <br>
+        </div>
+        <section class="checkbox">
+            <input type="checkbox" id="check" ></input>
+            <label for="check">Remember me</label>
+        </section>
+        <div class="button" > 
+            <button class="buttonlogin" type="submit" name="submit" value="LOGIN"> Login </button>
+        </div>
+        <div class="signuplink">
+            <a href='PLACEHOLDER'> Don't have an account? </a>
+        </div>
+        
 
+
+    </div>
     <form action="/login" method="POST">
-
-        <h1> login </h1> <br> <br>
-        <input type="text" id="user" name="user" placeholder="Username" class="center"> <br> <br>
-        <input type="text" id="password" name="password" placeholder="Password" class="center"> <br> <br> <br>
-        <button type="submit" name="submit" value="LOGIN" class="button center"> login </button>
-
-         <!-- display error messages -->
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <ul class=flashes>
-                {% for message in messages %}
-                    <li>{{ message }}</li>
-                {% endfor %}
-                </ul>
-            {% endif %}
-            {% endwith %}
-        {% block body %}{% endblock %}
-
     </form>
 
 </body>
