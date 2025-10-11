@@ -35,18 +35,11 @@
     display: inline-block;
 }
 
-header img:hover {
-    animation: spin 4s linear infinite;
+    header img:hover {
+    transform: scale(1.05) rotate(360deg);
+    transition: transform 1s ease; /* smooth animation */
 }
 
-@keyframes spin {
-    from {
-        transform: rotate(0deg) scale(1.05);
-    }
-    to {
-        transform: rotate(360deg) scale(50.05);
-    }
-}
 
 
     header a {
