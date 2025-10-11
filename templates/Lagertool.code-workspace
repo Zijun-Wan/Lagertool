@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "Lagertool",
+			"path": ".."
+		},
+		{
+			"name": "lagertool-java",
+			"path": "../../../lagertool-java"
+		}
+	],
+	"settings": {}
+}

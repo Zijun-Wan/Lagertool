@@ -1,0 +1,160 @@
+/* Grundlayout */
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: #fffbea;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-width: 420px;
+  margin-inline: auto;
+  border: 1px solid #ccc;
+}
+
+header, footer {
+  background-color: #fbe36a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+}
+
+header h1 {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+header button {
+  background: white;
+  border: 1px solid #888;
+  border-radius: 5px;
+  padding: 4px 8px;
+}
+
+main {
+  flex: 1;
+  padding: 12px;
+  overflow-y: auto;
+}
+
+/* Auth Screen */
+.auth-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.yellow-btn {
+  background-color: #fbe36a;
+  border: 1px solid #d2b900;
+  border-radius: 6px;
+  padding: 10px;
+  font-weight: 600;
+}
+
+.gray-btn {
+  background: #e0e0e0;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.switch {
+  font-size: 0.9rem;
+}
+
+/* Inventory Table */
+.inventory-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter-btn {
+  background: #fff;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+
+.inventory-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.inventory-table th, .inventory-table td {
+  border: 1px solid #999;
+  padding: 8px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* Details */
+.details-box {
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 10px;
+  background: #fff;
+}
+
+.picture-box {
+  border: 1px dashed #aaa;
+  border-radius: 6px;
+  text-align: center;
+  padding: 20px;
+  margin-top: 10px;
+  background: #fffef3;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+/* Booking */
+.note {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  margin: 20px 0;
+}
+
+.day {
+  padding: 8px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  background: white;
+}
+
+.day.unavailable {
+  background: #f88;
+  color: white;
+  pointer-events: none;
+}
+
+/* Footer */
+footer {
+  font-size: 0.85rem;
+  justify-content: space-around;
+  border-top: 1px solid #ccc;
+}
