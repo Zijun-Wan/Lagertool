@@ -1,5 +1,7 @@
 from flask import Flask, redirect, url_for, render_template, request, flash
 import sqlite3
+import os
+from werkzeug.utils import secure_filename
 
 # sector for User
 class User:
@@ -16,7 +18,8 @@ class User:
     # to initialize the user when logged in
     def initialize(self, user_id, cat):
         self.user_info=[]
-        self.type=-1
+        # store type/category as given by the login lookup
+        self.type = cat
         self.other_info=[]
         self.other_info_index=-1
         self.temp=0
@@ -131,6 +134,8 @@ def inventorycheck():
         elif request.form.get('submit') == 'LOGOUT':
             user01.initialize(-1, -1)
             return redirect(url_for('login'))
+        elif request.form.get('submit') == 'ADD_ITEM':
+            return redirect(url_for('add_item'))
         else:
             item_id = request.form.get('submit')
             return redirect(url_for('item_detail', item_id=item_id))
@@ -150,6 +155,76 @@ def item_detail(item_id):
             return redirect(url_for('login'))
     # TODO: Replace the following with actual database queries to get item details
     return render_template('item_detail.html', item_id=item_id, item_name="Sample Item", catagory="Sample Category", discription="This is a sample item description.", available=5, total=10)
+
+
+# route for admin to add new items
+@app.route('/add_item', methods=['GET', 'POST'])
+def add_item():
+    # Only admins allowed
+    try:
+        is_admin = (user01.type == 'admin')
+    except Exception:
+        is_admin = False
+
+    if not is_admin:
+        flash('You must be an admin to add items.')
+        return redirect(url_for('login'))
+
+    if request.method == 'POST':
+        # collect form data
+        item_id = request.form.get('item_id')
+        name = request.form.get('name')
+        info = request.form.get('info')
+        stocks = request.form.get('stocks')
+
+        # handle image upload
+        image_filename = None
+        if 'image' in request.files:
+            image = request.files['image']
+            if image and image.filename:
+                uploads_dir = os.path.join(app.root_path, 'static', 'uploads')
+                os.makedirs(uploads_dir, exist_ok=True)
+                filename = secure_filename(image.filename)
+                save_path = os.path.join(uploads_dir, filename)
+                image.save(save_path)
+                image_filename = f'static/uploads/{filename}'
+
+        # Insert into database. Add optional columns if they do not exist.
+        conn = sqlite3.connect('Lagertur.db')
+        cur = conn.cursor()
+        # Attempt to add columns if they don't exist (SQLite will error if they do)
+        try:
+            cur.execute("ALTER TABLE item ADD COLUMN description TEXT")
+        except Exception:
+            pass
+        try:
+            cur.execute("ALTER TABLE item ADD COLUMN image TEXT")
+        except Exception:
+            pass
+
+        # default borrow = 0
+        borrow = 0
+        # Some DBs use different column names; attempt INSERT with columns we expect
+        try:
+            cur.execute("INSERT INTO item (itemID, name, catagory, total, borrow, description, image) VALUES (?,?,?,?,?,?,?)",
+                        (item_id, name, '', stocks if stocks else None, borrow, info, image_filename))
+        except Exception:
+            # fallback: try a minimal insert (name, total)
+            try:
+                cur.execute("INSERT INTO item (itemID, name, total, borrow) VALUES (?,?,?,?)",
+                            (item_id, name, stocks if stocks else None, borrow))
+            except Exception as e:
+                conn.rollback()
+                conn.close()
+                flash('Failed to add item: ' + str(e))
+                return redirect(url_for('add_item'))
+
+        conn.commit()
+        conn.close()
+        flash('Item added successfully')
+        return redirect(url_for('inventorycheck'))
+
+    return render_template('add_item.html')
 
 # TODO:route for Booking Aviability
 @app.route('/bookingaviability', methods=['GET', 'POST'])
