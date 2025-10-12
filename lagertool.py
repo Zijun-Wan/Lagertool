@@ -98,6 +98,28 @@ def mybookings():
     
     return render_template('mybookings.html', bookings=bookings)
 
+# route for Inventory Check
+@app.route('/inventorycheck', methods=['GET', 'POST'])
+def inventorycheck():
+    conn = sqlite3.connect("Lagertur.db")
+    cur = conn.cursor()
+    
+    # Fetch item lists
+    # TODO: add an category part to the database
+    cur.execute("SELECT name, catagory, total, borrow FROM item")
+    items = cur.fetchall()
+    conn.close()
+    
+    return render_template('inventorycheck.html', kit_lists=items)
+
+# route for Booking Aviability
+@app.route('/bookingaviability', methods=['GET', 'POST'])
+def bookingaviability():
+    if request.method == 'POST':
+        if request.form.get('submit') == 'CHECK':
+            flash("checking aviability...")
+    return render_template('bookingaviability.html')
+
 # ───────────── App starten ─────────────
 if __name__== "__main__":
     app.run(debug=True)
