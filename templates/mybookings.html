@@ -170,7 +170,7 @@
 
   <!-- Header -->
   <header>
-    <a href="homepage.html"><img src="logo.png" alt="Logo"></a>
+    <a><img src="logo.png" alt="Logo"></a>
     <a href="logout.html">Log out</a>
   </header>
 
@@ -189,9 +189,9 @@
       <tbody>
   {% for booking in bookings %}
     <tr>
-      <td><a href="#">{{ booking.name }}</a></td>
-      <td>{{ booking.startTime }}</td>
-      <td>{{ booking.endTime }}</td>
+      <td><button class="button" type="submit" name="submit" onclick="" value={{booking[0]}}>{{ booking[1] }}</buttom></td>
+      <td>{{ booking[2] }}</td>
+      <td>{{ booking[3] }}</td>
     </tr>
   {% endfor %}
 </tbody>
@@ -201,7 +201,7 @@
     </table>
 
     <!-- Button innerhalb des Seitenflusses -->
-    <button class="inventory-button" onclick="window.location.href='inventory.html'">Inventory</button>
+    <button class="button" type="submit" name="submit" onclick="" value="INVENTORY">Inventory</button>
   </main>
 
   <!-- Footer -->

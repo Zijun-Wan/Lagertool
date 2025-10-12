@@ -88,16 +88,24 @@ def mybookings():
     conn = sqlite3.connect("Lagertur.db")
     cur = conn.cursor()
     
+    # TODO:Shouldn't this show only the bookings for the exact user? i.e WHERE systemLog.userID = user01.user_info[0]
+    # I'm not familiar with JOIN statements, so I leave this for now we fix later
     # SELECT JOIN: Item-Name + Start + Ende
     cur.execute("""
-        SELECT item.name, systemLog.startTime, systemLog.endTime 
+        SELECT systemLog.logID, item.name, systemLog.startTime, systemLog.endTime 
         FROM item 
         JOIN systemLog ON item.itemID = systemLog.itemID
     """)
     
     rows = cur.fetchall()
     conn.close()
-    
+    if request.method == 'POST':
+        if request.form.get('submit') == 'INVENTORY':
+            return redirect(url_for('inventorycheck'))
+        else:
+            log_id = request.form.get('submit')
+            # TODO: add cancle.html and cancle function
+            return redirect(url_for('cancle', log_id=log_id))
     return render_template('mybookings.html', bookings=rows)
 
 # route for Inventory Check
@@ -142,6 +150,13 @@ def back():
 @app.route('/edit_inventory', methods=['GET', 'POST'])
 def edit_inventory():
     return render_template('edit_inventory.html')
+
+# TODO: route for cancle this is not even started
+@app.route('/cancle/<log_id>', methods=['GET', 'POST'])
+def cancle(log_id):
+    if request.method == 'POST':
+        if request.form.get('submit') == 'CANCLE':
+            flash("cancelling booking...")
 
 # ───────────── App starten ─────────────
 if __name__== "__main__":
