@@ -127,9 +127,7 @@ def inventorycheck():
     conn.close()
     
     if request.method == 'POST':
-        if request.form.get('submit') == 'Edit':
-            return redirect(url_for('edit_inventory'))
-        elif request.form.get('submit') == 'BACK':
+        if request.form.get('submit') == 'BACK':
             return redirect(url_for('back'))
         elif request.form.get('submit') == 'LOGOUT':
             user01.initialize(-1, -1)
@@ -234,12 +232,7 @@ def bookingaviability(item_id):
             flash("checking aviability...")
     return render_template('bookingaviability.html')
 
-# TODO:route for Edit Inventory no html yet (not started)
-@app.route('/edit_inventory', methods=['GET', 'POST'])
-def edit_inventory():
-    return render_template('edit_inventory.html')
-
-# TODO: route for cancle this is not even started no html yet
+# route for cancle
 @app.route('/cancle/<log_id>', methods=['GET', 'POST'])
 def cancle(log_id):
     if request.method == 'POST':
