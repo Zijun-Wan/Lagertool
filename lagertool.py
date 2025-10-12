@@ -136,15 +136,20 @@ def inventorycheck():
             return redirect(url_for('item_detail', item_id=item_id))
     return render_template('inventorycheck.html', kit_lists=items)
 
-# TODO: route for Item Detail no html yet (not started) this is the one displaying all details of item neeed help on database side
+# TODO: route for Item Detail this is the one displaying all details of item neeed help on database side
 @app.route('/item_detail/<item_id>', methods=['GET', 'POST'])
 def item_detail(item_id):
+    # Fetch item details from the database to display
     if request.method == 'POST':
         if request.form.get('submit') == 'BACK':
             return redirect(url_for('back'))
         elif request.form.get('submit') == 'BOOK':
             redirect(url_for('bookingaviability', item_id=item_id))
-    return render_template('item_detail.html', item_id=item_id)
+        elif request.form.get('submit') == 'LOGOUT':
+            user01.initialize(-1, -1)
+            return redirect(url_for('login'))
+    # TODO: Replace the following with actual database queries to get item details
+    return render_template('item_detail.html', item_id=item_id, item_name="Sample Item", catagory="Sample Category", discription="This is a sample item description.", available=5, total=10)
 
 # TODO:route for Booking Aviability
 @app.route('/bookingaviability', methods=['GET', 'POST'])
@@ -153,11 +158,6 @@ def bookingaviability(item_id):
         if request.form.get('submit') == 'CHECK':
             flash("checking aviability...")
     return render_template('bookingaviability.html')
-
-# route for back (404)
-@app.route('/back')
-def back():
-    return render_template('back.html')
 
 # TODO:route for Edit Inventory no html yet (not started)
 @app.route('/edit_inventory', methods=['GET', 'POST'])
@@ -179,6 +179,11 @@ def cancle(log_id):
             return redirect(url_for('mybookings'))
     
     return render_template('cancle.html', log_id=log_id)
+
+# route for back (404)
+@app.route('/back')
+def back():
+    return render_template('back.html')
 
 # ───────────── App starten ─────────────
 if __name__== "__main__":

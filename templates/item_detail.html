@@ -13,7 +13,7 @@
       <a class="brand" href="/">Lagertool</a>
       <div class="header-right">
         {% if user01.user_info and user01.user_info[0] != -1 %}
-          <button class="logout" type="submit" name="submit" value="LOGOUT">Log out</button>
+          <button class="logout" type="submit" name="submit" onclick="" value="LOGOUT">Log out</button>
         {% endif %}
       </div>
     </header>
@@ -21,27 +21,27 @@
     <main class="container">
       <div class="card">
         <div class="card-header">
-          <h1 class="item-name">{{ item_name if item_name is defined else 'Product Name' }}</h1>
-          <span class="item-category">{{ item_category if item_category is defined else 'Category' }}</span>
+          <h1 class="item-name">{{ item_name }}</h1>
+          <span class="item-category">{{ catagory }}</span>
         </div>
 
         <div class="card-body">
           <section class="details">
             <h2>About this item</h2>
-            <p class="description">{{ item_description if item_description is defined else 'No description available.' }}</p>
+            <p class="description">{{ discription }}</p>
 
             <ul class="meta">
               <li><strong>Item ID:</strong> {{ item_id }}</li>
-              <li><strong>Available:</strong> {{ available if available is defined else 'Unknown' }}</li>
-              <li><strong>Total:</strong> {{ total if total is defined else '—' }}</li>
+              <li><strong>Available:</strong> {{ available }}</li>
+              <li><strong>Total:</strong> {{ total }}</li>
             </ul>
           </section>
         </div>
 
         <div class="card-footer">
           <div class="buttons">
-            <button class="btn btn-ghost" type="submit" name="submit" value="BACK">Back</button>
-            <button class="btn btn-primary" type="submit" name="submit" value="BOOK">Book</button>
+            <button class="btn btn-ghost" type="submit" name="submit" onclick="" value="BACK">Back</button>
+            <button class="btn btn-primary" type="submit" name="submit" onclick="" value="BOOK">Book</button>
           </div>
         </div>
       </div>
