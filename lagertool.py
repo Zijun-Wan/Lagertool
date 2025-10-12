@@ -82,7 +82,7 @@ def register():
             return redirect(url_for('login'))
     return render_template('register.html')
 
-# TODO:route for My Bookings and change to the same way as others
+# route for My Bookings
 @app.route('/mybookings')
 def mybookings():
     conn = sqlite3.connect("Lagertur.db")
