@@ -1,0 +1,95 @@
+:root{
+  --yellow:#edc203;
+  --yellow-600:#f2d54d;
+  --bg:#f7f7f8;
+  --card-bg:#ffffff;
+  --muted:#6b6b6b;
+  --accent:#2b3a67;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background:linear-gradient(180deg, var(--bg), #ffffff);
+  color:#222;
+}
+
+.site-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 28px;
+  background:var(--yellow);
+  color:#111;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+}
+.site-header .brand{
+  font-weight:800;
+  letter-spacing:0.6px;
+  color:#111;
+  text-decoration:none;
+  font-size:1.2rem;
+}
+.header-right .logout{
+  background:transparent;
+  border:2px solid rgba(0,0,0,0.06);
+  padding:8px 12px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.container{
+  max-width:920px;
+  margin:36px auto;
+  padding:0 20px 40px;
+}
+
+.card{
+  background:var(--card-bg);
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(16,24,40,0.06);
+}
+.card-header{
+  padding:26px 28px;
+  border-bottom:1px solid #f0f0f0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.item-name{
+  margin:0;
+  font-size:1.6rem;
+  color:var(--accent);
+}
+.item-category{
+  background:var(--yellow-600);
+  padding:8px 12px;
+  border-radius:999px;
+  font-weight:700;
+  color:#111;
+}
+
+.card-body{padding:22px 28px}
+.details h2{margin-top:0;color:var(--accent)}
+.description{color:var(--muted);line-height:1.6}
+.meta{list-style:none;padding:0;margin:18px 0 0;color:var(--muted)}
+.meta li{margin:6px 0}
+
+.card-footer{padding:18px 28px;border-top:1px solid #f6f6f6;background:linear-gradient(180deg, rgba(237,194,3,0.03), transparent)}
+
+.buttons{display:flex;gap:12px;justify-content:flex-end}
+.btn{padding:10px 16px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
+.btn-ghost{background:transparent;border:2px solid rgba(0,0,0,0.06);color:var(--accent)}
+.btn-primary{background:var(--yellow);color:#111;box-shadow:0 8px 24px rgba(237,194,3,0.18);}
+.btn-primary:hover{transform:translateY(-3px);transition:transform .18s ease}
+
+.site-footer{padding:18px;text-align:center;color:var(--muted);font-size:0.9rem}
+
+/* Responsive */
+@media (max-width:640px){
+  .card-header{flex-direction:column;align-items:flex-start;gap:10px}
+  .buttons{justify-content:space-between}
+}
