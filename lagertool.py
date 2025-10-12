@@ -244,7 +244,16 @@ def edit_inventory():
 def cancle(log_id):
     if request.method == 'POST':
         if request.form.get('submit') == 'CANCLE':
-            flash("cancelling booking...")
+            # TODO: add cancle function here with database
+            return redirect(url_for('mybookings'))
+        elif request.form.get('submit') == 'RETURN':
+            # TODO: add return function here with database
+            return redirect(url_for('mybookings'))
+        elif request.form.get('submit') == 'MISSING':
+            # TODO: add missing function here with database
+            return redirect(url_for('mybookings'))
+    
+    return render_template('cancle.html', log_id=log_id)
 
 # ───────────── App starten ─────────────
 if __name__== "__main__":
