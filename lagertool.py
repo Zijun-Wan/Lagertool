@@ -130,12 +130,22 @@ def inventorycheck():
             return redirect(url_for('login'))
         else:
             item_id = request.form.get('submit')
-            return redirect(url_for('bookingaviability', item_id=item_id))
+            return redirect(url_for('item_detail', item_id=item_id))
     return render_template('inventorycheck.html', kit_lists=items)
+
+# TODO: route for Item Detail no html yet (not started)
+@app.route('/item_detail/<item_id>', methods=['GET', 'POST'])
+def item_detail(item_id):
+    if request.method == 'POST':
+        if request.form.get('submit') == 'BACK':
+            return redirect(url_for('back'))
+        elif request.form.get('submit') == 'BOOK':
+            redirect(url_for('bookingaviability', item_id=item_id))
+    return render_template('item_detail.html', item_id=item_id)
 
 # TODO:route for Booking Aviability
 @app.route('/bookingaviability', methods=['GET', 'POST'])
-def bookingaviability():
+def bookingaviability(item_id):
     if request.method == 'POST':
         if request.form.get('submit') == 'CHECK':
             flash("checking aviability...")
@@ -146,12 +156,12 @@ def bookingaviability():
 def back():
     return render_template('back.html')
 
-# TODO:route for Edit Inventory
+# TODO:route for Edit Inventory no html yet (not started)
 @app.route('/edit_inventory', methods=['GET', 'POST'])
 def edit_inventory():
     return render_template('edit_inventory.html')
 
-# TODO: route for cancle this is not even started
+# TODO: route for cancle this is not even started no html yet
 @app.route('/cancle/<log_id>', methods=['GET', 'POST'])
 def cancle(log_id):
     if request.method == 'POST':
