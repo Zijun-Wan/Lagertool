@@ -12,30 +12,26 @@
 </head>
 
 <body>
-    <div class="logininbox">
-        <div class="loginheader">
-            <h1> Login </h1>
-        </div> 
-        <div class="inputbox"> 
-            <input class="logintext" id="username" placeholder="Email or username" class="username" autocomplete="off" required> <br> <br>
-            <input class="logintext" id="password" name="password" placeholder="Password" class="center" autocomplete="off" required> <br> <br> <br>
-        </div>
-        <section class="checkbox">
-            <input type="checkbox" id="check" ></input>
-            <label for="check">Remember me</label>
-        </section>
-        <div class="button" > 
-            <button class="buttonlogin" type="submit" name="submit" value="LOGIN"> Login </button>
-        </div>
-        <div class="signuplink">
-            <a href='register.html'> Don't have an account? </a>
-        </div>
-        
+    <form action="/" method="POST">
+        <div class="logininbox">
+            <div class="loginheader">
+                <h1> Login </h1>
+            </div> 
+            <div class="inputbox"> 
+                <input class="logintext" id="username" placeholder="Email or username" class="username" autocomplete="off" required> <br> <br>
+                <input class="logintext" id="password" name="password" placeholder="Password" class="center" autocomplete="off" required> <br> <br> <br>
+            </div>
+            <section class="checkbox">
+                <input type="checkbox" id="check" ></input>
+                <label for="check">Remember me</label>
+            </section>
+            <div class="button" > 
+                <button class="buttonlogin" type="submit" name="submit" onclick="" value="LOGIN"> Login </button>
+            </div>
+            <div class="signup">
+                <button class="buttonlogin" type="submit" name="submit" onclick="" value="REGISTER"> Don't have an account? </button>
+            </div>
 
-
-    </div>
-    <form action="/login" method="POST">
+        </div>
     </form>
-
-
 </body>
