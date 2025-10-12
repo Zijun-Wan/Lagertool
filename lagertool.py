@@ -170,6 +170,9 @@ def cancle(log_id):
     if request.method == 'POST':
         if request.form.get('submit') == 'CANCLE':
             flash("cancelling booking...")
+            return redirect(url_for('mybookings'))
+    
+    return render_template('cancle.html', log_id=log_id)
 
 # ───────────── App starten ─────────────
 if __name__== "__main__":
