@@ -82,7 +82,7 @@ def register():
             return redirect(url_for('login'))
     return render_template('register.html')
 
-# route for My Bookings
+# TODO:route for My Bookings and change to the same way as others
 @app.route('/mybookings')
 def mybookings():
     conn = sqlite3.connect("Lagertur.db")
@@ -98,16 +98,7 @@ def mybookings():
     rows = cur.fetchall()
     conn.close()
     
-    # Array von Dictionaries für Template
-    bookings = []
-    for row in rows:
-        bookings.append({
-            'name': row[0],
-            'startTime': row[1],
-            'endTime': row[2]
-        })
-    
-    return render_template('mybookings.html', bookings=bookings)
+    return render_template('mybookings.html', bookings=rows)
 
 # route for Inventory Check
 @app.route('/inventorycheck', methods=['GET', 'POST'])
@@ -117,13 +108,24 @@ def inventorycheck():
     
     # Fetch item lists
     # TODO: add an category part to the database
-    cur.execute("SELECT name, catagory, total, borrow FROM item")
+    cur.execute("SELECT itemID, name, catagory, total, borrow FROM item")
     items = cur.fetchall()
     conn.close()
     
+    if request.method == 'POST':
+        if request.form.get('submit') == 'Edit':
+            return redirect(url_for('edit_inventory'))
+        elif request.form.get('submit') == 'BACK':
+            return redirect(url_for('back'))
+        elif request.form.get('submit') == 'LOGOUT':
+            user01.initialize(-1, -1)
+            return redirect(url_for('login'))
+        else:
+            item_id = request.form.get('submit')
+            return redirect(url_for('bookingaviability', item_id=item_id))
     return render_template('inventorycheck.html', kit_lists=items)
 
-# route for Booking Aviability
+# TODO:route for Booking Aviability
 @app.route('/bookingaviability', methods=['GET', 'POST'])
 def bookingaviability():
     if request.method == 'POST':
@@ -135,6 +137,11 @@ def bookingaviability():
 @app.route('/back')
 def back():
     return render_template('back.html')
+
+# TODO:route for Edit Inventory
+@app.route('/edit_inventory', methods=['GET', 'POST'])
+def edit_inventory():
+    return render_template('edit_inventory.html')
 
 # ───────────── App starten ─────────────
 if __name__== "__main__":

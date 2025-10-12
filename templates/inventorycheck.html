@@ -173,45 +173,47 @@
   </style>
 </head>
 <body>
+  <form action="/inventorycheck" method="POST">
 
-  <!-- Header -->
-  <header>
-    <a href="homepage.html"><img src="logo.png" alt="Logo"></a>
-    <a href="logout.html">Log out</a>
-  </header>
-
-  <!-- Hauptinhalt -->
-  <main>
-    <h1>Inventory</h1>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Item</th>
-          <th>Category</th>
-          <th>Available</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for item in kit_lists: %}
+    <!-- Header -->
+    <header>
+      <a><img src="logo.png" alt="Logo"></a>
+      <button class="button" type="submit" name="submit" onclick="" value="LOGOUT">Log out</button>
+    </header>
+  
+    <!-- Hauptinhalt -->
+    <main>
+      <h1>Inventory</h1>
+  
+      <table>
+        <thead>
           <tr>
-              <td> <a herf="item.html">{{item[0]}}</a></td>
-              <td> {{item[1]}} </td>
-              <td> {{item[2]}} </td>
+            <th>Item</th>
+            <th>Category</th>
+            <th>Available</th>
           </tr>
-        {% endfor %} 
-      </tbody>
-    </table>
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <p><a href="impressum.html">Impressum</a></p>
-    <img src="logo.png" alt="Logo">
-  </footer>
-
-  <!-- Edit Button -->
-  <button class="edit-button" onclick="window.location.href='edit_inventory.html'">Edit</button>
-
+        </thead>
+        <tbody>
+          {% for item in kit_lists: %}
+            <tr>
+                <td> <button class="button" type="submit" name="submit" onclick="" value={{item[0]}}>{{item[1]}}</button></td>
+                <td> {{item[2]}} </td>
+                <td> {{item[3]}} </td>
+            </tr>
+          {% endfor %} 
+        </tbody>
+      </table>
+    </main>
+  
+    <!-- Footer -->
+    <footer>
+      <p><a href="impressum.html">Impressum</a></p>
+      <img src="logo.png" alt="Logo">
+    </footer>
+  
+    <!-- Edit Button -->
+    <button class="button" type="submit" name="submit" onclick="" value="BACK">Back</button>
+    <button class="button" type="submit" name="submit" onclick="" value="EDIT">Edit</button>
+  </form>
 </body>
 </html>
