@@ -72,6 +72,8 @@ def login():
                 user01.initialize(userID, cat[0])
                 conn.close()
                 return redirect(url_for('mybookings'))
+        if request.form.get('submit') == 'REGISTER':
+            return redirect(url_for('register'))
     return render_template('login.html')
 
 # route for register
