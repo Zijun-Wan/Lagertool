@@ -71,6 +71,17 @@ def login():
                 return redirect(url_for('mybookings'))
     return render_template('login.html')
 
+# route for register
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        if request.form.get('submit') == 'REGISTER':
+            # TODO: add register function here and delete flash
+            # register function should add the new user to the database
+            flash("registering...")
+            return redirect(url_for('login'))
+    return render_template('register.html')
+
 # route for My Bookings
 @app.route('/mybookings')
 def mybookings():
@@ -119,6 +130,11 @@ def bookingaviability():
         if request.form.get('submit') == 'CHECK':
             flash("checking aviability...")
     return render_template('bookingaviability.html')
+
+# route for back (404)
+@app.route('/back')
+def back():
+    return render_template('back.html')
 
 # ───────────── App starten ─────────────
 if __name__== "__main__":
