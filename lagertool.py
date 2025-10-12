@@ -136,7 +136,7 @@ def inventorycheck():
             return redirect(url_for('item_detail', item_id=item_id))
     return render_template('inventorycheck.html', kit_lists=items)
 
-# TODO: route for Item Detail no html yet (not started)
+# TODO: route for Item Detail no html yet (not started) this is the one displaying all details of item neeed help on database side
 @app.route('/item_detail/<item_id>', methods=['GET', 'POST'])
 def item_detail(item_id):
     if request.method == 'POST':
