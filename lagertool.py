@@ -102,6 +102,9 @@ def mybookings():
     if request.method == 'POST':
         if request.form.get('submit') == 'INVENTORY':
             return redirect(url_for('inventorycheck'))
+        elif request.form.get('submit') == 'LOGOUT':
+            user01.initialize(-1, -1)
+            return redirect(url_for('login'))
         else:
             log_id = request.form.get('submit')
             # TODO: add cancle.html and cancle function
